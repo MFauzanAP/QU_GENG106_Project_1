@@ -72,7 +72,7 @@ Abstract class used as a basis for all the other shape classes
 ### Functions
 - `__init__(properties)`
 	 - Used to initialise a new shape, mainly used in the initialisation function of a class
-	 - ####Parameters
+	 - #### Parameters
 	 	 - `properties`
 			 - A dictionary containing all the input properties
 			 - **Type** - Dictionary
@@ -92,16 +92,16 @@ Abstract class used as a basis for all the other shape classes
 				 },
 			 }
 			 ```
-	 - ####Returns
+	 - #### Returns
 		 - Returns the newly created shape object
 
 - `print_properties()`
 	 - Used to print all of a shapes properties as long as they are in the input and output props variable.
-	 - ####Parameters
+	 - #### Parameters
 		 - No parameters
-	 - ####Returns
+	 - #### Returns
 		 - No returns
-	 - ####Example Output
+	 - #### Example Output
 	 ```
 	 Rectangle Properties
 	 width = 10 m
