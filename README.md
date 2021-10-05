@@ -5,7 +5,7 @@ Source code for the first computer programming 106 project at Qatar University
 Abstract class used as a basis for all the other shape classes
 
 ### Properties
-- `name` 
+- #### `name` 
 	 - Stores the name of the shape. This variable will be set in the initialisation function of each shape class.
 	 - Setting the name of the shape
 	```
@@ -25,7 +25,7 @@ Abstract class used as a basis for all the other shape classes
 	 name = rect.name
 	 ```
 
-- `input_props`
+- #### `input_props`
 	 - A dictionary that stores the input properties of a shape. Examples of this are dimensions, density, and elasticity
 	 - Each value must be another dictionary that contains a keys for the value of the property as well as its unit
 	 ```
@@ -47,7 +47,7 @@ Abstract class used as a basis for all the other shape classes
 	 - Value key of each property will be used for calculations
 	 - Unit key of each property will be used for printing and output
 
-- `output_props`
+- #### `output_props`
 	 - A dictionary that stores the output properties of a shape. Examples of this are volume, weight, and surface area
 	 - Each value must be another dictionary that contains a keys for the value of the property as well as its unit
 	 ```
@@ -70,9 +70,9 @@ Abstract class used as a basis for all the other shape classes
 	 - Unit key of each property will be used for printing and output
 
 ### Functions
-- `__init__(properties)`
+- #### `__init__(properties)`
 	 - Used to initialise a new shape, mainly used in the initialisation function of a class
-	 - #### Parameters
+	 - ##### Parameters
 	 	 - `properties`
 			 - A dictionary containing all the input properties
 			 - **Type** - Dictionary
@@ -92,16 +92,16 @@ Abstract class used as a basis for all the other shape classes
 				 },
 			 }
 			 ```
-	 - #### Returns
+	 - ##### Returns
 		 - Returns the newly created shape object
 
-- `print_properties()`
+- #### `print_properties()`
 	 - Used to print all of a shapes properties as long as they are in the input and output props variable.
-	 - #### Parameters
+	 - ##### Parameters
 		 - No parameters
-	 - #### Returns
+	 - ##### Returns
 		 - No returns
-	 - #### Example Output
+	 - ##### Example Output
 	 ```
 	 Rectangle Properties
 	 width = 10 m
@@ -125,9 +125,9 @@ Class derived from the shape base class, one of the options for the menu
 - This class has no properties
 
 ### Functions
-- `__init__(width, height, length, density, elasticity)`
+- #### `__init__(width, height, length, density, elasticity)`
 	 - Creates a new rectangle class with the given parameters, and then calculates the output properties
-	 - #### Parameters
+	 - ##### Parameters
 		 - `width`
 			 - The rectangles width
 			 - **Type** - Float / Int
@@ -143,47 +143,47 @@ Class derived from the shape base class, one of the options for the menu
 		 - `elasticity`
 			 - The rectangles elasticity
 			 - **Type** - Float / Int
-	 - #### Returns
+	 - ##### Returns
 		 - Returns the newly created rectangle object
-- `calculate_properties()`
+- #### `calculate_properties()`
 	 - Calculates the rectangles output properties like perimeter, area, inertia, surface area, weight, and flexural rigidity
-	 - #### Parameters
+	 - ##### Parameters
 		 - No parameters
-	 - #### Returns
+	 - ##### Returns
 		 - No returns
-- `calculate_perimeter()`
+- #### `calculate_perimeter()`
 	 - Calculates the rectangles perimeter
-	 - #### Parameters
+	 - ##### Parameters
 		 - No parameters
-	 - #### Returns
+	 - ##### Returns
 		 - Returns the calculated perimeter
-- `calculate_area()`
+- #### `calculate_area()`
 	 - Calculates the rectangles area
-	 - #### Parameters
+	 - ##### Parameters
 		 - No parameters
-	 - #### Returns
+	 - ##### Returns
 		 - Returns the calculated area
-- `calculate_inertia()`
+- #### `calculate_inertia()`
 	 - Calculates the rectangles inertia
-	 - #### Parameters
+	 - ##### Parameters
 		 - No parameters
-	 - #### Returns
+	 - ##### Returns
 		 - Returns the calculated inertia
-- `calculate_surface_area()`
+- #### `calculate_surface_area()`
 	 - Calculates the rectangles surface area
-	 - #### Parameters
+	 - ##### Parameters
 		 - No parameters
-	 - #### Returns
+	 - ##### Returns
 		 - Returns the calculated surface area
-- `calculate_weight()`
+- #### `calculate_weight()`
 	 - Calculates the rectangles weight
-	 - #### Parameters
+	 - ##### Parameters
 		 - No parameters
-	 - #### Returns
+	 - ##### Returns
 		 - Returns the calculated weight
-- `calculate_flexural_rigidity()`
+- #### `calculate_flexural_rigidity()`
 	 - Calculates the rectangles flexural rigidity
-	 - #### Parameters
+	 - ##### Parameters
 		 - No parameters
-	 - #### Returns
+	 - ##### Returns
 		 - Returns the calculated flexural rigidity
