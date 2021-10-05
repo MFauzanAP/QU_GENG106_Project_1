@@ -72,35 +72,36 @@ Abstract class used as a basis for all the other shape classes
 ### Functions
 - `__init__(properties)`
 	 - Used to initialise a new shape, mainly used in the initialisation function of a class
-	 - **Parameters**
+	 - ####Parameters
 	 	 - `properties`
-		 - A dictionary containing all the input properties
-		 ```
-		 properties = {
-			'width'	: { 
-				'value': width, 
-				'unit': 'm'
-			},
-			'density': { 
-				'value': density, 
-				'unit': 'kg/m^3'
-			},
-			'elasticity': { 
-				'value': elasticity, 
-				'unit': 'kN/m^2'
-			},
-		}
-		 ```
-	 - **Returns**
-		 - No returns
+			 - A dictionary containing all the input properties
+			 - **Type** - Dictionary
+			 ```
+			 properties = {
+				 'width'	: { 
+					 'value': width, 
+					 'unit': 'm'
+				 },
+				 'density': { 
+					 'value': density, 
+					 'unit': 'kg/m^3'
+				 },
+				 'elasticity': { 
+					 'value': elasticity, 
+					 'unit': 'kN/m^2'
+				 },
+			 }
+			 ```
+	 - ####Returns
+		 - Returns the newly created shape object
 
 - `print_properties()`
 	 - Used to print all of a shapes properties as long as they are in the input and output props variable.
-	 - **Parameters**
+	 - ####Parameters
 		 - No parameters
-	 - **Returns**
+	 - ####Returns
 		 - No returns
-	 - **Example Output**
+	 - ####Example Output
 	 ```
 	 Rectangle Properties
 	 width = 10 m
@@ -116,3 +117,73 @@ Abstract class used as a basis for all the other shape classes
 	 weight = 10000 kg
 	 flexural rigidity = 8333.333333333334 kN.m^2
 	 ```
+
+## rectangle.py
+Class derived from the shape base class, one of the options for the menu
+
+### Properties
+- This class has no properties
+
+### Functions
+- `__init__(width, height, length, density, elasticity)`
+	 - Creates a new rectangle class with the given parameters, and then calculates the output properties
+	 - #### Parameters
+		 - `width`
+			 - The rectangles width
+			 - **Type** - Float / Int
+		 - `height`
+			 - The rectangles height
+			 - **Type** - Float / Int
+		 - `length`
+			 - The rectangles length
+			 - **Type** - Float / Int
+		 - `density`
+			 - The rectangles density
+			 - **Type** - Float / Int
+		 - `elasticity`
+			 - The rectangles elasticity
+			 - **Type** - Float / Int
+	 - #### Returns
+		 - Returns the newly created rectangle object
+- `calculate_properties()`
+	 - Calculates the rectangles output properties like perimeter, area, inertia, surface area, weight, and flexural rigidity
+	 - #### Parameters
+		 - No parameters
+	 - #### Returns
+		 - No returns
+- `calculate_perimeter()`
+	 - Calculates the rectangles perimeter
+	 - #### Parameters
+		 - No parameters
+	 - #### Returns
+		 - Returns the calculated perimeter
+- `calculate_area()`
+	 - Calculates the rectangles area
+	 - #### Parameters
+		 - No parameters
+	 - #### Returns
+		 - Returns the calculated area
+- `calculate_inertia()`
+	 - Calculates the rectangles inertia
+	 - #### Parameters
+		 - No parameters
+	 - #### Returns
+		 - Returns the calculated inertia
+- `calculate_surface_area()`
+	 - Calculates the rectangles surface area
+	 - #### Parameters
+		 - No parameters
+	 - #### Returns
+		 - Returns the calculated surface area
+- `calculate_weight()`
+	 - Calculates the rectangles weight
+	 - #### Parameters
+		 - No parameters
+	 - #### Returns
+		 - Returns the calculated weight
+- `calculate_flexural_rigidity()`
+	 - Calculates the rectangles flexural rigidity
+	 - #### Parameters
+		 - No parameters
+	 - #### Returns
+		 - Returns the calculated flexural rigidity
