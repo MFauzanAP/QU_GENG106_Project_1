@@ -1,6 +1,12 @@
 # QU_GENG106_Project_1
 Source code for the first computer programming 106 project at Qatar University
 
+## Instructions
+1. Clone this repository onto your local machine
+2. Open the folder where you installed the project in VS Code
+3. Open the terminal with `Ctrl J` and run `pip install -r requirements.txt`
+4. Open the `main.py` file and press start
+
 ## shape.py
 Abstract class used as a basis for all the other shape classes
 
