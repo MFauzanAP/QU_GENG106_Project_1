@@ -3,14 +3,6 @@ import shape
 
 # Derive from base shape class
 class t_section(shape.shape):
-	
-	# Declare lambda to calculate perimeter
-	calculate_perimeter = lambda self : (2 * self.input_props['flange_width']['value']) + (2 * self.input_props['flange_height']['value']) + (2 * self.input_props['web_height']['value'])
-
-	# Declare lambda to calculate area
-	calculate_area = lambda self : (self.input_props['flange_width']['value'] * self.input_props['flange_height']['value']) + (self.input_props['web_width']['value'] * self.input_props['web_height']['value'])
-
-
 
 	# Override initialisation function
 	def __init__(self, overall_width, overall_height, flange_width, flange_height, web_width, web_height, length, density, elasticity):
@@ -53,7 +45,37 @@ class t_section(shape.shape):
 		self.output_props['inertia'] = { 'value': self.calculate_inertia(), 'unit': 'mm^4' }
 
 		# Call base function
-		super().calculate_general_properties()
+		super().calculate_general_properties()  
+
+	# Function called to calculate perimeter
+	def calculate_perimeter(self):
+        
+		# Extract data from input properties
+		b = self.input_props['overall_width']['value']
+		s = self.input_props['flange_height']['value']
+		h = self.input_props['web_height']['value']
+
+		# Calculate perimeter
+		perimeter = (b * 2) + (s * 2) + (h * 2)
+
+		# Return perimeter
+		return perimeter
+
+	# Function called to calculate area
+	def calculate_area(self):
+
+		# Extract data from input properties
+		b = self.input_props['overall_width']['value']
+		d = self.input_props['overall_height']['value']
+		s = self.input_props['flange_height']['value']
+		t = self.input_props['web_width']['value']
+		h = self.input_props['web_height']['value']
+
+		# Calculate area
+		area = (b * s) + (h * t)
+
+		# Return area
+		return area
 
 	# Function called to calculate inertia
 	def calculate_inertia(self):
