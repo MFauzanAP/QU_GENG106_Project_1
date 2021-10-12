@@ -29,6 +29,10 @@ class t_section(shape.shape):
 	# Function called to calculate shape properties
 	def calculate_properties(self):
         
+		# Calculate overall width and height
+		self.input_props['overall_width']['value'] = self.input_props['flange_width']['value']
+		self.input_props['overall_height']['value'] = self.input_props['flange_height']['value'] + self.input_props['web_height']['value']
+
 		# Calculate perimeter
 		self.output_props['perimeter'] = { 'value': self.calculate_perimeter(), 'unit': 'mm' }
 

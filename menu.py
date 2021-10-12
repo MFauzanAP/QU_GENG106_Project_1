@@ -41,8 +41,6 @@ def ask_t_section():
 	shape = t_section.t_section()
 
 	# Ask user to enter t_section properties
-	shape.input_props['overall_width']['value'] = validate_input(graphics.print_ask_properties, 'Enter T Section Width: ', args = shape)
-	shape.input_props['overall_height']['value'] = validate_input(graphics.print_ask_properties, 'Enter T Section Height: ', args = shape)
 	shape.input_props['flange_width']['value'] = validate_input(graphics.print_ask_properties, 'Enter Flange Width: ', args = shape)
 	shape.input_props['flange_height']['value'] = validate_input(graphics.print_ask_properties, 'Enter Flange Height: ', args = shape)
 	shape.input_props['web_width']['value'] = validate_input(graphics.print_ask_properties, 'Enter Web Width: ', args = shape)
