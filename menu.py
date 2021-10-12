@@ -30,8 +30,8 @@ def ask_rectangle():
 	rect.print_properties()
 
 	# Draw rectangle using turtle
-	# turtle_graphics.setup_turtle()
-	# turtle_graphics.draw_rectangle(rect)
+	turtle_graphics.setup_turtle()
+	turtle_graphics.draw_rectangle(rect)
 
 # Function used to validate user input
 def validate_input(function, message, legal = [], args = None):

@@ -11,6 +11,7 @@ PEN_SPEED = 50
 def setup_turtle():
 
 	# Initialise a new turtle object as well as screen
+	global screen, pen
 	screen = turtle.getscreen()
 	pen = turtle.Turtle()
 
@@ -29,7 +30,32 @@ def setup_turtle():
 def draw_rectangle(shape):
 
 	# Calculate ratio of height to width
-	ratio = shape.input_props['height']['value'] / shape.input_props['width']['value']
+	RATIO = shape.input_props['height']['value'] / shape.input_props['width']['value']
+
+	# Calculate rectangle width and height based on ratio
+	WIDTH = 500 if RATIO <= 1 else (1 / RATIO) * 500
+	HEIGHT = 500 if RATIO >= 1 else RATIO * 500
+
+	# Setup fill
+	pen.fillcolor('black')
+	pen.begin_fill()
+ 
+	# Start from top left
+	pen.goto(-WIDTH / 2, HEIGHT / 2)
+ 
+	# Repeat 4 times to draw each side
+	for i in range(4):
+         
+		# Draw width or height depending on which side is selected
+		pen.forward(WIDTH if i % 2 == 0 else HEIGHT)
+  
+		# Rotate 90 degrees
+		pen.right(90)
+  
+	# Stop fill
+	pen.end_fill()
+ 
+	# Write dimensions
 
 	# Stop turtle from closing
 	input('')
