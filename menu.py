@@ -2,6 +2,7 @@
 import graphics
 import turtle_graphics
 import rectangle
+import circle
 import t_section
 import utilities
 
@@ -33,6 +34,28 @@ def ask_rectangle():
 	# Draw rectangle using turtle
 	turtle_graphics.setup_turtle()
 	turtle_graphics.draw_rectangle(shape)
+
+# Function used to ask the user for circle data
+def ask_circle():
+
+	# Create a new circle with starting values
+	shape = circle.circle()
+
+	# Ask user to enter circle properties
+	shape.input_props['radius']['value'] = validate_input(graphics.print_ask_properties, 'Enter Circle Radius: ', args = shape)
+	shape.input_props['length']['value'] = validate_input(graphics.print_ask_properties, 'Enter Circle Length: ', args = shape)
+	shape.input_props['density']['value'] = validate_input(graphics.print_ask_properties, 'Enter Circle Density: ', args = shape)
+	shape.input_props['elasticity']['value'] = validate_input(graphics.print_ask_properties, 'Enter Circle Elasticity: ', args = shape)
+
+	# Recalculate properties
+	shape.calculate_properties()
+
+	# Print out circle properties
+	shape.print_properties()
+ 
+	# Draw circle using turtle
+	turtle_graphics.setup_turtle()
+	turtle_graphics.draw_circle(shape)
 
 # Function used to ask the user for t section data
 def ask_t_section():

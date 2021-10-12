@@ -8,7 +8,7 @@ DIMENSIONS_OFFSET = 25
 SHAPE_SIZE = 500
 SIZE_LIMIT = 100
 PEN_SIZE = 2
-PEN_SPEED = 50
+PEN_SPEED = 'fastest'
 BACKGROUND_COLOR = (199, 233, 248)
 PEN_COLOR = (50, 50, 50)
 
@@ -63,6 +63,7 @@ def draw_rectangle(shape):
 
 	# Stop fill
 	pen.end_fill()
+	pen.hideturtle()
 
 	# Write title
 	pen.goto(0, (HEIGHT / 2) + DIMENSIONS_OFFSET)
@@ -77,10 +78,41 @@ def draw_rectangle(shape):
 	# Stop turtle from closing
 	input('')
 
+# Function used to draw circle with the correct dimensions
+def draw_circle(shape):
+
+	# Calculate diameter
+	DIAMETER = SHAPE_SIZE
+
+	# Setup fill
+	pen.fillcolor(PEN_COLOR)
+	pen.begin_fill()
+
+	# Start from top left
+	pen.goto(0, -DIAMETER / 2)
+ 
+	# Draw circle
+	pen.circle(DIAMETER / 2)
+
+	# Stop fill
+	pen.end_fill()
+	pen.hideturtle()
+
+	# Write title
+	pen.goto(0, (DIAMETER / 2) + DIMENSIONS_OFFSET)
+	pen.write('Rectangle', align = 'center', font = ('Arial', 16, 'bold'))
+
+	# Write dimensions
+	pen.goto(0, (-DIAMETER / 2) - DIMENSIONS_OFFSET)
+	pen.write(f'{shape.input_props["diameter"]["value"]} {shape.input_props["diameter"]["unit"]}', align = 'center')
+
+	# Stop turtle from closing
+	input('')
+
 # Function used to draw t section with the correct dimensions
 def draw_t_section(shape):
-        
-        # Extract data from input properties
+
+	# Extract data from input properties
 	overall_width = shape.input_props['overall_width']['value']
 	overall_height = shape.input_props['overall_height']['value']
 	flange_width = shape.input_props['flange_width']['value']
@@ -134,6 +166,7 @@ def draw_t_section(shape):
 
 	# Stop fill
 	pen.end_fill()
+	pen.hideturtle()
 
 	# Write title
 	pen.goto(0, (HEIGHT / 2) + (DIMENSIONS_OFFSET * 2))
