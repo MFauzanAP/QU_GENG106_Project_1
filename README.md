@@ -17,7 +17,7 @@ Source code for the first computer programming 106 project at Qatar University
 	class circle(shape.shape):
 
 		# Override initialisation function
-		def __init__(self):
+		def __init__(self, length = 0, density = 0, elasticity = 0):
 
 			# Declare rectangle properties
 			properties = {
@@ -32,12 +32,6 @@ Source code for the first computer programming 106 project at Qatar University
 			# Set shape name
 			self.name = 'Circle'
 
-			# Calculate shape properties
-			self.calculate_properties()
-
-			# Print properties
-			self.print_properties()
-
 		# Function called to calculate shape properties
 		def calculate_properties(self):
 
@@ -47,11 +41,11 @@ Source code for the first computer programming 106 project at Qatar University
 3. Add in your shape's properties and add them to the `properties` variable inside the `__init__` function like so:
 	```
 	# Override initialisation function
-	def __init__(self, radius, length, density, elasticity):
+	def __init__(self, radius = 0, length = 0, density = 0, elasticity = 0):
 
 		# Declare rectangle properties
 		properties = {
-			'radius'		: { 'value': width, 'unit': 'mm'},
+			'radius'		: { 'value': radius, 'unit': 'mm'},
 			'length'		: { 'value': length, 'unit': 'm'},
 			'density'		: { 'value': density, 'unit': 'kg/m^3'},
 			'elasticity'		: { 'value': elasticity, 'unit': 'kN/m^2'},
@@ -62,18 +56,9 @@ Source code for the first computer programming 106 project at Qatar University
 
 		# Set shape name
 		self.name = 'Circle'
-
-		# Calculate shape properties
-		self.calculate_properties()
-
-		# Print properties
-		self.print_properties()
 	```
-4. Add your shape's calculations using lambdas and call them in the `calculate_properties` function. Then add the calculated property to the shape's `output_props` variable like so:
+4. Add your shape's calculations using functions and call them in the `calculate_properties` function. Then add the calculated property to the shape's `output_props` variable like so:
 	```
-	# Declare lambda to calculate area
-	calculate_area = lambda self : math.PI * (self.input_props['radius']['value'] ** 2)
-	
 	# Function called to calculate shape properties
 	def calculate_properties(self):
 
@@ -82,6 +67,18 @@ Source code for the first computer programming 106 project at Qatar University
 
 		# Call base function
 		super().calculate_general_properties()
+		
+	# Function called to calculate area
+	def calculate_area(self):
+
+		# Extract data from input properties
+		r = self.input_props['radius']['value']
+
+		# Calculate area
+		area = math.PI * (r ** 2)
+
+		# Return area
+		return area
 	```
 5. Now open the `menu.py` file and import your shape at the top. Then copy paste this function and add your shape's input properties in like so:
 	```
@@ -89,7 +86,7 @@ Source code for the first computer programming 106 project at Qatar University
 	def ask_circle():
 
 		# Create a new circle with starting values
-		circle = circle.circle(0, 0, 0, 0)
+		circle = circle.circle()
 
 		# Ask user to enter circle properties
 		circle.input_props['radius']['value'] = validate_input(graphics.print_ask_properties, 'Enter Circle Radius: ', args = circle)
