@@ -1,11 +1,11 @@
 # Imports
-from turtle import shape
 import graphics
 import turtle_graphics
 import rectangle
+import circle
 import t_section
 import utilities
-import circle
+
 # Function used to ask user which shape he wants
 def ask_shape():
 
@@ -14,7 +14,7 @@ def ask_shape():
 
 # Function used to ask the user for rectangle data
 def ask_rectangle():
-	
+
 	# Create a new rectangle with starting values
 	shape = rectangle.rectangle()
 
@@ -34,6 +34,7 @@ def ask_rectangle():
 	# Draw rectangle using turtle
 	turtle_graphics.setup_turtle()
 	turtle_graphics.draw_rectangle(shape)
+
 # Function used to ask the user for circle data
 def ask_circle():
 
@@ -51,7 +52,6 @@ def ask_circle():
 
 	# Print out circle properties
 	shape.print_properties()
-
 
 # Function used to ask the user for t section data
 def ask_t_section():
