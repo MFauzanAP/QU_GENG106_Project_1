@@ -4,8 +4,11 @@ import turtle
 # Declare constants
 SCREEN_WIDTH = 750
 SCREEN_HEIGHT = 750
+DIMENSIONS_OFFSET = 25
 PEN_SIZE = 2
 PEN_SPEED = 50
+BACKGROUND_COLOR = (199, 233, 248)
+PEN_COLOR = (50, 50, 50)
 
 # Function used to set up turtle object
 def setup_turtle():
@@ -18,13 +21,14 @@ def setup_turtle():
 	# Set up screen
 	screen.setup(SCREEN_WIDTH, SCREEN_HEIGHT)
 	screen.colormode(255)
-	screen.bgcolor(199, 233, 248)
+	screen.bgcolor(BACKGROUND_COLOR)
 
 	# Setup pen
-	pen.color('black')
+	pen.color(PEN_COLOR)
 	pen.pensize(PEN_SIZE)
 	pen.speed(PEN_SPEED)
 	pen.penup()
+	pen.hideturtle()
 
 # Function used to draw rectangle with the correct dimensions
 def draw_rectangle(shape):
@@ -37,24 +41,24 @@ def draw_rectangle(shape):
 	HEIGHT = 500 if RATIO >= 1 else RATIO * 500
 
 	# Setup fill
-	pen.fillcolor('black')
+	pen.fillcolor(PEN_COLOR)
 	pen.begin_fill()
- 
+
 	# Start from top left
 	pen.goto(-WIDTH / 2, HEIGHT / 2)
- 
+
 	# Repeat 4 times to draw each side
 	for i in range(4):
-         
+
 		# Draw width or height depending on which side is selected
 		pen.forward(WIDTH if i % 2 == 0 else HEIGHT)
-  
+
 		# Rotate 90 degrees
 		pen.right(90)
-  
+
 	# Stop fill
 	pen.end_fill()
- 
+
 	# Write dimensions
 
 	# Stop turtle from closing
