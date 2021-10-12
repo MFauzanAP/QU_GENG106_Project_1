@@ -5,7 +5,7 @@ import shape
 class t_section(shape.shape):
 
 	# Override initialisation function
-	def __init__(self, overall_width, overall_height, flange_width, flange_height, web_width, web_height, length, density, elasticity):
+	def __init__(self, overall_width = 0, overall_height = 0, flange_width = 0, flange_height = 0, web_width = 0, web_height = 0, length = 0, density = 0, elasticity = 0):
 
 		# Declare rectangle properties
 		properties = {

@@ -15,7 +15,7 @@ def ask_shape():
 def ask_rectangle():
 
 	# Create a new rectangle with starting values
-	shape = rectangle.rectangle(0, 0, 0, 0, 0)
+	shape = rectangle.rectangle()
 
 	# Ask user to enter rectangle properties
 	shape.input_props['width']['value'] = validate_input(graphics.print_ask_properties, 'Enter Rectangle Width: ', args = shape)
@@ -38,7 +38,7 @@ def ask_rectangle():
 def ask_t_section():
 
 	# Create a new t_section with starting values
-	shape = t_section.t_section(0, 0, 0, 0, 0, 0, 0, 0, 0)
+	shape = t_section.t_section()
 
 	# Ask user to enter t_section properties
 	shape.input_props['overall_width']['value'] = validate_input(graphics.print_ask_properties, 'Enter T Section Width: ', args = shape)

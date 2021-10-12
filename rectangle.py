@@ -16,7 +16,7 @@ class rectangle(shape.shape):
 
 
 	# Override initialisation function
-	def __init__(self, width, height, length, density, elasticity):
+	def __init__(self, width = 0, height = 0, length = 0, density = 0, elasticity = 0):
 
 		# Declare rectangle properties
 		properties = {
