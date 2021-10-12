@@ -41,10 +41,10 @@ def ask_circle():
 	shape = circle.circle()
 
 	# Ask user to enter circle properties
-	shape.input_props['radius']['value'] = validate_input(graphics.print_ask_properties, 'Enter Circle Radius: ', args = circle)
-	shape.input_props['length']['value'] = validate_input(graphics.print_ask_properties, 'Enter Circle Length: ', args = circle)
-	shape.input_props['density']['value'] = validate_input(graphics.print_ask_properties, 'Enter Circle Density: ', args = circle)
-	shape.input_props['elasticity']['value'] = validate_input(graphics.print_ask_properties, 'Enter Circle Elasticity: ', args = circle)
+	shape.input_props['radius']['value'] = validate_input(graphics.print_ask_properties, 'Enter Circle Radius: ', args = shape)
+	shape.input_props['length']['value'] = validate_input(graphics.print_ask_properties, 'Enter Circle Length: ', args = shape)
+	shape.input_props['density']['value'] = validate_input(graphics.print_ask_properties, 'Enter Circle Density: ', args = shape)
+	shape.input_props['elasticity']['value'] = validate_input(graphics.print_ask_properties, 'Enter Circle Elasticity: ', args = shape)
 
 	# Recalculate properties
 	shape.calculate_properties()
