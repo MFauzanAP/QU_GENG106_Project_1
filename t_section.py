@@ -26,12 +26,6 @@ class t_section(shape.shape):
 		# Set shape name
 		self.name = 'T Section'
 
-		# Calculate shape properties
-		self.calculate_properties()
-
-		# Print properties
-		self.print_properties()
-
 	# Function called to calculate shape properties
 	def calculate_properties(self):
         

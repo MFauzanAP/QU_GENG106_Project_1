@@ -33,12 +33,6 @@ class rectangle(shape.shape):
 		# Set shape name
 		self.name = 'Rectangle'
 
-		# Calculate shape properties
-		self.calculate_properties()
-
-		# Print properties
-		self.print_properties()
-
 	# Function called to calculate shape properties
 	def calculate_properties(self):
 
