@@ -43,7 +43,7 @@ def print_shape(shape):
 		if digits >= 12: value = f'{shape.input_props[prop]["value"]:e}'
 
 		# Print the name of the property and the value
-		table.add_row([prop, value, unit])
+		table.add_row([utilities.property_to_string(prop), value, unit])
 
 	# Loop through each output property
 	for prop in shape.output_props:
@@ -59,7 +59,7 @@ def print_shape(shape):
 		if digits >= 12: value = f'{shape.output_props[prop]["value"]:e}'
 
 		# Print the name of the property and the value
-		table.add_row([prop, value, unit])
+		table.add_row([utilities.property_to_string(prop), value, unit])
 
 	# Print table
 	print(table)
@@ -97,7 +97,7 @@ def print_ask_properties(shape):
 		if digits >= 12: value = f'{shape.input_props[prop]["value"]:e}'
 
 		# Print the name of the property and the value
-		table.add_row([prop, value, unit])
+		table.add_row([utilities.property_to_string(prop), value, unit])
 
 	# Output table
 	print(table)

@@ -30,7 +30,7 @@ class shape:
 	calculate_surface_area = lambda self : (self.output_props['perimeter']['value'] / 1000) * self.input_props['length']['value']
 
 	# Declare lambda to calculate weight
-	calculate_weight = lambda self : (self.input_props['width']['value'] / 1000) * (self.input_props['height']['value'] / 1000) * (self.input_props['length']['value'] / 1000) * self.input_props['density']['value']
+	calculate_weight = lambda self : (self.output_props['area']['value'] / 1000000) * (self.input_props['length']['value'] / 1000) * self.input_props['density']['value']
 
 	# Declare lambda to calculate flexural rigidity
 	calculate_flexural_rigidity = lambda self : self.input_props['elasticity']['value'] * self.output_props['inertia']['value']

@@ -4,19 +4,8 @@ import shape
 # Derive from base shape class
 class rectangle(shape.shape):
 
-	# Declare lambda to calculate perimeter
-	calculate_perimeter = lambda self : (2 * self.input_props['width']['value']) + (2 * self.input_props['height']['value'])
-
-	# Declare lambda to calculate area
-	calculate_area = lambda self : self.input_props['width']['value'] * self.input_props['height']['value']
-
-	# Declare lambda to calculate inertia
-	calculate_inertia = lambda self : (self.input_props['width']['value'] * (self.input_props['height']['value'] ** 3)) / 12
-
-
-
 	# Override initialisation function
-	def __init__(self, width, height, length, density, elasticity):
+	def __init__(self, width = 0, height = 0, length = 0, density = 0, elasticity = 0):
 
 		# Declare rectangle properties
 		properties = {
@@ -33,12 +22,6 @@ class rectangle(shape.shape):
 		# Set shape name
 		self.name = 'Rectangle'
 
-		# Calculate shape properties
-		self.calculate_properties()
-
-		# Print properties
-		self.print_properties()
-
 	# Function called to calculate shape properties
 	def calculate_properties(self):
 
@@ -53,3 +36,45 @@ class rectangle(shape.shape):
 
 		# Call base function
 		super().calculate_general_properties()
+
+	# Function called to calculate perimeter
+	def calculate_perimeter(self):
+
+		# Extract data from input properties
+		b = self.input_props['width']['value']
+		h = self.input_props['height']['value']
+
+		# Calculate perimeter
+		perimeter = (b * 2) + (h * 2)
+
+		# Return perimeter
+		return perimeter
+
+	# Function called to calculate area
+	def calculate_area(self):
+
+		# Extract data from input properties
+		b = self.input_props['width']['value']
+		h = self.input_props['height']['value']
+
+		# Calculate area
+		area = b * h
+
+		# Return area
+		return area
+
+	# Function called to calculate inertia
+	def calculate_inertia(self):
+        
+		# Extract data from input properties
+		b = self.input_props['width']['value']
+		h = self.input_props['height']['value']
+
+		# Calculate numerator
+		numerator = b * (h ** 3)
+
+		# Calculate inertia
+		inertia = numerator / 12
+
+		# Return inertia
+		return inertia

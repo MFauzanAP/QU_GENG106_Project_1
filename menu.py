@@ -2,6 +2,7 @@
 import graphics
 import turtle_graphics
 import rectangle
+import t_section
 import utilities
 
 # Function used to ask user which shape he wants
@@ -14,24 +15,49 @@ def ask_shape():
 def ask_rectangle():
 
 	# Create a new rectangle with starting values
-	rect = rectangle.rectangle(0, 0, 0, 0, 0)
+	shape = rectangle.rectangle()
 
 	# Ask user to enter rectangle properties
-	rect.input_props['width']['value'] = validate_input(graphics.print_ask_properties, 'Enter Rectangle Width: ', args = rect)
-	rect.input_props['height']['value'] = validate_input(graphics.print_ask_properties, 'Enter Rectangle Height: ', args = rect)
-	rect.input_props['length']['value'] = validate_input(graphics.print_ask_properties, 'Enter Rectangle Length: ', args = rect)
-	rect.input_props['density']['value'] = validate_input(graphics.print_ask_properties, 'Enter Rectangle Density: ', args = rect)
-	rect.input_props['elasticity']['value'] = validate_input(graphics.print_ask_properties, 'Enter Rectangle Elasticity: ', args = rect)
+	shape.input_props['width']['value'] = validate_input(graphics.print_ask_properties, 'Enter Rectangle Width: ', args = shape)
+	shape.input_props['height']['value'] = validate_input(graphics.print_ask_properties, 'Enter Rectangle Height: ', args = shape)
+	shape.input_props['length']['value'] = validate_input(graphics.print_ask_properties, 'Enter Rectangle Length: ', args = shape)
+	shape.input_props['density']['value'] = validate_input(graphics.print_ask_properties, 'Enter Rectangle Density: ', args = shape)
+	shape.input_props['elasticity']['value'] = validate_input(graphics.print_ask_properties, 'Enter Rectangle Elasticity: ', args = shape)
 
 	# Recalculate properties
-	rect.calculate_properties()
+	shape.calculate_properties()
 
 	# Print out rectangle properties
-	rect.print_properties()
+	shape.print_properties()
 
 	# Draw rectangle using turtle
 	turtle_graphics.setup_turtle()
-	turtle_graphics.draw_rectangle(rect)
+	turtle_graphics.draw_rectangle(shape)
+
+# Function used to ask the user for t section data
+def ask_t_section():
+
+	# Create a new t_section with starting values
+	shape = t_section.t_section()
+
+	# Ask user to enter t_section properties
+	shape.input_props['flange_width']['value'] = validate_input(graphics.print_ask_properties, 'Enter Flange Width: ', args = shape)
+	shape.input_props['flange_height']['value'] = validate_input(graphics.print_ask_properties, 'Enter Flange Height: ', args = shape)
+	shape.input_props['web_width']['value'] = validate_input(graphics.print_ask_properties, 'Enter Web Width: ', args = shape)
+	shape.input_props['web_height']['value'] = validate_input(graphics.print_ask_properties, 'Enter Web Height: ', args = shape)
+	shape.input_props['length']['value'] = validate_input(graphics.print_ask_properties, 'Enter T Section Length: ', args = shape)
+	shape.input_props['density']['value'] = validate_input(graphics.print_ask_properties, 'Enter T Section Density: ', args = shape)
+	shape.input_props['elasticity']['value'] = validate_input(graphics.print_ask_properties, 'Enter T Section Elasticity: ', args = shape)
+
+	# Recalculate properties
+	shape.calculate_properties()
+
+	# Print out t_section properties
+	shape.print_properties()
+
+	# Draw t_section using turtle
+	turtle_graphics.setup_turtle()
+	turtle_graphics.draw_t_section(shape)
 
 # Function used to validate user input
 def validate_input(function, message, legal = [], args = None):
