@@ -55,6 +55,9 @@ def ask_t_section():
 	# Print out t_section properties
 	shape.print_properties()
 
+	# Draw t_section using turtle
+	turtle_graphics.setup_turtle()
+	turtle_graphics.draw_t_section(shape)
 
 # Function used to validate user input
 def validate_input(function, message, legal = [], args = None):
