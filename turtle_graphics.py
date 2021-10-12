@@ -60,6 +60,10 @@ def draw_rectangle(shape):
 	pen.end_fill()
 
 	# Write dimensions
+	pen.goto(0, (-HEIGHT / 2) - DIMENSIONS_OFFSET)
+	pen.write(shape.input_props['width']['value'], align = 'center')
+	pen.goto((-WIDTH / 2) - (DIMENSIONS_OFFSET / 2), 0)
+	pen.write(shape.input_props['height']['value'], align = 'right')
 
 	# Stop turtle from closing
 	input('')
