@@ -203,6 +203,13 @@ Abstract class used as a basis for all the other shape classes
 	 - ##### Returns
 		 - Returns the newly created shape object
 
+- #### `calculate_general_properties()`
+	- Used to calculate properties with the same formulas like surface area, weight, and rigidity
+	- ##### Parameters
+		- No parameters
+	- ##### Returns
+		- No returns
+
 - #### `print_properties()`
 	 - Used to print all of a shapes properties as long as they are in the input and output props variable.
 	 - ##### Parameters
@@ -225,6 +232,27 @@ Abstract class used as a basis for all the other shape classes
 	 weight = 10000 kg
 	 flexural rigidity = 8333.333333333334 kN.m^2
 	 ```
+	 
+- ### `calculate_surface_area()`
+	- Lambda used to calculate the surface area of a shape using its input and output properties
+	- ##### Parameters
+		- No parameters
+	- #### Returns
+		- Returns the surface area
+
+- ### `calculate_weight()`
+	- Lambda used to calculate the weight of a shape using its input and output properties
+	- ##### Parameters
+		- No parameters
+	- #### Returns
+		- Returns the weight
+
+- ### `calculate_flexural_rigidity()`
+	- Lambda used to calculate the flexural rigidty of a shape using its input and output properties
+	- ##### Parameters
+		- No parameters
+	- #### Returns
+		- Returns the flexural rigidty
 
 ## rectangle.py
 Class derived from the shape base class, one of the options for the menu
@@ -253,45 +281,31 @@ Class derived from the shape base class, one of the options for the menu
 			 - **Type** - Float / Int
 	 - ##### Returns
 		 - Returns the newly created rectangle object
+
 - #### `calculate_properties()`
-	 - Calculates the rectangles output properties like perimeter, area, inertia, surface area, weight, and flexural rigidity
+	 - Calculates the rectangles output properties like perimeter, area, inertia
 	 - ##### Parameters
 		 - No parameters
 	 - ##### Returns
 		 - No returns
+
 - #### `calculate_perimeter()`
 	 - Calculates the rectangles perimeter
 	 - ##### Parameters
 		 - No parameters
 	 - ##### Returns
 		 - Returns the calculated perimeter
+
 - #### `calculate_area()`
 	 - Calculates the rectangles area
 	 - ##### Parameters
 		 - No parameters
 	 - ##### Returns
 		 - Returns the calculated area
+
 - #### `calculate_inertia()`
 	 - Calculates the rectangles inertia
 	 - ##### Parameters
 		 - No parameters
 	 - ##### Returns
 		 - Returns the calculated inertia
-- #### `calculate_surface_area()`
-	 - Calculates the rectangles surface area
-	 - ##### Parameters
-		 - No parameters
-	 - ##### Returns
-		 - Returns the calculated surface area
-- #### `calculate_weight()`
-	 - Calculates the rectangles weight
-	 - ##### Parameters
-		 - No parameters
-	 - ##### Returns
-		 - Returns the calculated weight
-- #### `calculate_flexural_rigidity()`
-	 - Calculates the rectangles flexural rigidity
-	 - ##### Parameters
-		 - No parameters
-	 - ##### Returns
-		 - Returns the calculated flexural rigidity
