@@ -9,7 +9,7 @@ def main():
 		1		: menu.ask_rectangle,
 		2		: menu.ask_rectangle,
 		3		: menu.ask_rectangle,
-		4		: menu.ask_rectangle,
+		4		: menu.ask_t_section,
 		5		: menu.ask_rectangle,
 		9		: exit
 	}
