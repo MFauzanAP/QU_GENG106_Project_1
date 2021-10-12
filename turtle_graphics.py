@@ -5,6 +5,7 @@ import turtle
 SCREEN_WIDTH = 750
 SCREEN_HEIGHT = 750
 DIMENSIONS_OFFSET = 25
+SIZE_LIMIT = 100
 PEN_SIZE = 2
 PEN_SPEED = 50
 BACKGROUND_COLOR = (199, 233, 248)
@@ -34,11 +35,14 @@ def setup_turtle():
 def draw_rectangle(shape):
 
 	# Calculate ratio of height to width
-	RATIO = shape.input_props['height']['value'] / shape.input_props['width']['value']
+	ratio = shape.input_props['height']['value'] / shape.input_props['width']['value']
+
+	# Clamp ratio to avoid very tiny rectangles
+	ratio = min(SIZE_LIMIT, max(1 / SIZE_LIMIT, ratio))
 
 	# Calculate rectangle width and height based on ratio
-	WIDTH = 500 if RATIO <= 1 else (1 / RATIO) * 500
-	HEIGHT = 500 if RATIO >= 1 else RATIO * 500
+	WIDTH = 500 if ratio <= 1 else (1 / ratio) * 500
+	HEIGHT = 500 if ratio >= 1 else ratio * 500
 
 	# Setup fill
 	pen.fillcolor(PEN_COLOR)
