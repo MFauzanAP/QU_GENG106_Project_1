@@ -43,7 +43,7 @@ class t_section(shape.shape):
 
 	# Function called to calculate perimeter
 	def calculate_perimeter(self):
-        
+
 		# Extract data from input properties
 		b = self.input_props['overall_width']['value']
 		s = self.input_props['flange_height']['value']
@@ -60,7 +60,6 @@ class t_section(shape.shape):
 
 		# Extract data from input properties
 		b = self.input_props['overall_width']['value']
-		d = self.input_props['overall_height']['value']
 		s = self.input_props['flange_height']['value']
 		t = self.input_props['web_width']['value']
 		h = self.input_props['web_height']['value']
