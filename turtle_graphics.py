@@ -59,6 +59,10 @@ def draw_rectangle(shape):
 	# Stop fill
 	pen.end_fill()
 
+	# Write title
+	pen.goto(0, (HEIGHT / 2) + DIMENSIONS_OFFSET)
+	pen.write('Rectangle', align = 'center', font = ('Arial', 16, 'bold'))
+
 	# Write dimensions
 	pen.goto(0, (-HEIGHT / 2) - DIMENSIONS_OFFSET)
 	pen.write(shape.input_props['width']['value'], align = 'center')
