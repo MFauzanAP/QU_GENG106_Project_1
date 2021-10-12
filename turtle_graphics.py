@@ -170,7 +170,7 @@ def draw_t_section(shape):
 
 	# Write title
 	pen.goto(0, (HEIGHT / 2) + (DIMENSIONS_OFFSET * 2))
-	pen.write('T Section', align = 'center', font = ('Arial', 16, 'bold'))
+	pen.write('T-Section', align = 'center', font = ('Arial', 16, 'bold'))
  
 	# Write dimensions
 	pen.goto(0, (HEIGHT / 2) + (DIMENSIONS_OFFSET / 2))

@@ -24,7 +24,7 @@ class t_section(shape.shape):
 		super().__init__(properties)
 
 		# Set shape name
-		self.name = 'T Section'
+		self.name = 'T-Section'
 
 	# Function called to calculate shape properties
 	def calculate_properties(self):
