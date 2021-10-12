@@ -52,7 +52,7 @@ def validate_input(function, message, legal = [], args = None):
 			if error: print(error)
 
 			# Ask user a question and store their response
-			response = int(input(message))
+			response = float(input(message))
 
 			# Gets legal list from parameter if present, else then creates a new list with the response since all responses are legal
 			final_legal = [ response ] if len(legal) == 0 else legal
