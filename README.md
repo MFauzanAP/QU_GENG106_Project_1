@@ -4,8 +4,113 @@ Source code for the first computer programming 106 project at Qatar University
 ## Instructions
 1. Clone this repository onto your local machine
 2. Open the folder where you installed the project in VS Code
-3. Open the terminal with `Ctrl J` and run `pip install -r requirements.txt`
 4. Open the `main.py` file and press start
+
+## Creating a New Shape
+1. Create a new file for your shape. You can call this file whatever you want. eg `circle.py`
+2. Copy paste this example script, then change the class name to whatever shape you're making.
+	```
+	# Imports
+	import shape
+
+	# Derive from base shape class
+	class circle(shape.shape):
+
+		# Override initialisation function
+		def __init__(self):
+
+			# Declare rectangle properties
+			properties = {
+				'length'		: { 'value': length, 'unit': 'm'},
+				'density'		: { 'value': density, 'unit': 'kg/m^3'},
+				'elasticity'		: { 'value': elasticity, 'unit': 'kN/m^2'},
+			}
+
+			# Create new rectangle object
+			super().__init__(properties)
+
+			# Set shape name
+			self.name = 'Circle'
+
+			# Calculate shape properties
+			self.calculate_properties()
+
+			# Print properties
+			self.print_properties()
+
+		# Function called to calculate shape properties
+		def calculate_properties(self):
+
+			# Call base function
+			super().calculate_general_properties()
+	```
+3. Add in your shape's properties and add them to the `properties` variable inside the `__init__` function like so:
+	```
+	# Override initialisation function
+	def __init__(self, radius, length, density, elasticity):
+
+		# Declare rectangle properties
+		properties = {
+			'radius'		: { 'value': width, 'unit': 'mm'},
+			'length'		: { 'value': length, 'unit': 'm'},
+			'density'		: { 'value': density, 'unit': 'kg/m^3'},
+			'elasticity'		: { 'value': elasticity, 'unit': 'kN/m^2'},
+		}
+
+		# Create new rectangle object
+		super().__init__(properties)
+
+		# Set shape name
+		self.name = 'Circle'
+
+		# Calculate shape properties
+		self.calculate_properties()
+
+		# Print properties
+		self.print_properties()
+	```
+4. Add your shape's calculations using lambdas and call them in the `calculate_properties` function. Then add the calculated property to the shape's `output_props` variable like so:
+	```
+	# Declare lambda to calculate area
+	calculate_area = lambda self : math.PI * (self.input_props['radius']['value'] ** 2)
+	
+	# Function called to calculate shape properties
+	def calculate_properties(self):
+
+		# Calculate area
+		self.output_props['area'] = { 'value': self.calculate_area(), 'unit': 'mm^2' }
+
+		# Call base function
+		super().calculate_general_properties()
+	```
+5. Now open the `menu.py` file and import your shape at the top. Then copy paste this function and add your shape's input properties in like so:
+	```
+	# Function used to ask the user for circle data
+	def ask_circle():
+
+		# Create a new circle with starting values
+		circle = circle.circle(0, 0, 0, 0)
+
+		# Ask user to enter circle properties
+		circle.input_props['radius']['value'] = validate_input(graphics.print_ask_properties, 'Enter Circle Radius: ', args = circle)
+		circle.input_props['length']['value'] = validate_input(graphics.print_ask_properties, 'Enter Circle Length: ', args = circle)
+		circle.input_props['density']['value'] = validate_input(graphics.print_ask_properties, 'Enter Circle Density: ', args = circle)
+		circle.input_props['elasticity']['value'] = validate_input(graphics.print_ask_properties, 'Enter Circle Elasticity: ', args = circle)
+
+		# Recalculate properties
+		circle.calculate_properties()
+
+		# Print out circle properties
+		circle.print_properties()
+	```
+6. Now open `main.py` and add in your newly made function to the dictionary like so:
+	```
+	menu_choices = {
+		1		: menu.ask_rectangle,
+		2		: menu.ask_circle,
+		9		: exit
+	}
+	```
 
 ## shape.py
 Abstract class used as a basis for all the other shape classes
