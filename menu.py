@@ -52,6 +52,10 @@ def ask_circle():
 
 	# Print out circle properties
 	shape.print_properties()
+ 
+	# Draw circle using turtle
+	turtle_graphics.setup_turtle()
+	turtle_graphics.draw_circle(shape)
 
 # Function used to ask the user for t section data
 def ask_t_section():
