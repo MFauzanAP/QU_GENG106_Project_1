@@ -92,7 +92,7 @@ class t_section(shape.shape):
 
 		# Calculate y
 		y = d - (numerator / denominator)
-  
+
 		# Calculate inertia
 		inertia = (t * (y ** 3) + (b * ((d - y) ** 3)) - ((b - t) * ((d - y - s) ** 3))) / 3
 

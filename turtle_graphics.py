@@ -2,9 +2,10 @@
 import turtle
 
 # Declare constants
-SCREEN_WIDTH = 750
-SCREEN_HEIGHT = 750
+SCREEN_WIDTH = 1000
+SCREEN_HEIGHT = 1000
 DIMENSIONS_OFFSET = 25
+SHAPE_SIZE = 500
 SIZE_LIMIT = 100
 PEN_SIZE = 2
 PEN_SPEED = 50
@@ -41,8 +42,8 @@ def draw_rectangle(shape):
 	ratio = min(SIZE_LIMIT, max(1 / SIZE_LIMIT, ratio))
 
 	# Calculate rectangle width and height based on ratio
-	WIDTH = 500 if ratio <= 1 else (1 / ratio) * 500
-	HEIGHT = 500 if ratio >= 1 else ratio * 500
+	WIDTH = SHAPE_SIZE if ratio <= 1 else (1 / ratio) * SHAPE_SIZE
+	HEIGHT = SHAPE_SIZE if ratio >= 1 else ratio * SHAPE_SIZE
 
 	# Setup fill
 	pen.fillcolor(PEN_COLOR)
@@ -94,8 +95,8 @@ def draw_t_section(shape):
 	ratio = min(SIZE_LIMIT, max(1 / SIZE_LIMIT, ratio))
 
 	# Calculate t section width and height based on ratio
-	WIDTH = 500 if ratio <= 1 else (1 / ratio) * 500
-	HEIGHT = 500 if ratio >= 1 else ratio * 500
+	WIDTH = SHAPE_SIZE if ratio <= 1 else (1 / ratio) * SHAPE_SIZE
+	HEIGHT = SHAPE_SIZE if ratio >= 1 else ratio * SHAPE_SIZE
 	flange_width = (flange_width / overall_width) * WIDTH
 	flange_height = (flange_height / overall_width) * HEIGHT
 	web_width = (web_width / overall_width) * WIDTH
@@ -135,8 +136,18 @@ def draw_t_section(shape):
 	pen.end_fill()
 
 	# Write title
-	pen.goto(0, (HEIGHT / 2) + DIMENSIONS_OFFSET)
+	pen.goto(0, (HEIGHT / 2) + (DIMENSIONS_OFFSET * 2))
 	pen.write('T Section', align = 'center', font = ('Arial', 16, 'bold'))
+ 
+	# Write dimensions
+	pen.goto(0, (HEIGHT / 2) + (DIMENSIONS_OFFSET / 2))
+	pen.write(f'{shape.input_props["flange_width"]["value"]} {shape.input_props["flange_width"]["unit"]}', align = 'center')
+	pen.goto((-WIDTH / 2) - (DIMENSIONS_OFFSET / 2), (HEIGHT / 2) - (flange_height / 2))
+	pen.write(f'{shape.input_props["flange_height"]["value"]} {shape.input_props["flange_height"]["unit"]}', align = 'right')
+	pen.goto(0, (-HEIGHT / 2) - DIMENSIONS_OFFSET)
+	pen.write(f'{shape.input_props["web_width"]["value"]} {shape.input_props["web_width"]["unit"]}', align = 'center')
+	pen.goto((-web_width / 2) - DIMENSIONS_OFFSET, (-flange_height / 2))
+	pen.write(f'{shape.input_props["web_height"]["value"]} {shape.input_props["web_height"]["unit"]}', align = 'right')
 
 	# Stop turtle from closing
 	input('')
