@@ -4,6 +4,7 @@ import turtle_graphics
 import rectangle
 import circle
 import t_section
+import donut
 import utilities
 
 # Function used to ask user which shape he wants
@@ -56,6 +57,25 @@ def ask_circle():
 	# Draw circle using turtle
 	turtle_graphics.setup_turtle()
 	turtle_graphics.draw_circle(shape)
+
+def ask_donut():
+
+	shape = donut.donut()
+
+	shape.input_props['inner_radius']['value'] = validate_input(graphics.print_ask_properties, 'Enter Inner Radius: ', args = shape)
+	shape.input_props['outer_radius']['value'] = validate_input(graphics.print_ask_properties, 'Enter Outer Radius: ', args = shape)
+	shape.input_props['length']['value'] = validate_input(graphics.print_ask_properties, 'Enter Beam Length: ', args = shape)
+	shape.input_props['density']['value'] = validate_input(graphics.print_ask_properties, 'Enter Hollow Circular Density: ', args = shape)
+	shape.input_props['elasticity']['value'] = validate_input(graphics.print_ask_properties, 'Enter Hollow Circular Elasticity: ', args = shape)
+
+	shape.calculate_properties()
+
+	
+	shape.print_properties()
+ 
+	turtle_graphics.setup_turtle()
+	turtle_graphics.draw_circle(shape)
+
 
 # Function used to ask the user for t section data
 def ask_t_section():
