@@ -10,6 +10,8 @@ class donut(shape.shape):
 
 		# Declare rectangle properties
 		properties = {
+			'outer_diameter'	: { 'value': inner_radius, 'unit': 'mm'},
+			'inner_diameter'	: { 'value': inner_radius, 'unit': 'mm'},
 			'outer_radius'		: { 'value': outer_radius, 'unit': 'mm'},
 			'inner_radius'		: { 'value': inner_radius, 'unit': 'mm'},
 			'length'		: { 'value': beam_length, 'unit': 'm'},

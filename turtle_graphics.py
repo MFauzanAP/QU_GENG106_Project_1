@@ -100,11 +100,54 @@ def draw_circle(shape):
 
 	# Write title
 	pen.goto(0, (DIAMETER / 2) + DIMENSIONS_OFFSET)
-	pen.write('Rectangle', align = 'center', font = ('Arial', 16, 'bold'))
+	pen.write('Circle', align = 'center', font = ('Arial', 16, 'bold'))
 
 	# Write dimensions
 	pen.goto(0, (-DIAMETER / 2) - DIMENSIONS_OFFSET)
 	pen.write(f'{shape.input_props["diameter"]["value"]} {shape.input_props["diameter"]["unit"]}', align = 'center')
+
+	# Stop turtle from closing
+	input('')
+
+# Function used to draw donut with the correct dimensions
+def draw_donut(shape):
+
+	# Calculate diameters
+	OUTER_DIAMETER = SHAPE_SIZE
+	INNER_DIAMETER = (shape.input_props["inner_diameter"]["value"] / shape.input_props["outer_diameter"]["value"]) * SHAPE_SIZE
+
+	# Setup fill
+	pen.fillcolor(PEN_COLOR)
+	pen.begin_fill()
+
+	# Start from bottom middle
+	pen.goto(0, -OUTER_DIAMETER / 2)
+
+	# Draw outer circle
+	pen.circle(OUTER_DIAMETER / 2)
+
+	# Go to inner circle position
+	pen.end_fill()
+	pen.fillcolor(BACKGROUND_COLOR)
+	pen.goto(0, -INNER_DIAMETER / 2)
+	pen.begin_fill()
+
+	# Draw inner hole
+	pen.circle(INNER_DIAMETER / 2)
+
+	# Stop fill
+	pen.end_fill()
+	pen.hideturtle()
+
+	# Write title
+	pen.goto(0, (OUTER_DIAMETER / 2) + DIMENSIONS_OFFSET)
+	pen.write('Rectangle', align = 'center', font = ('Arial', 16, 'bold'))
+
+	# Write dimensions
+	pen.goto(0, 0)
+	pen.write(f'{shape.input_props["inner_diameter"]["value"]} {shape.input_props["inner_diameter"]["unit"]}', align = 'center')
+	pen.goto(0, (-OUTER_DIAMETER / 2) - DIMENSIONS_OFFSET)
+	pen.write(f'{shape.input_props["outer_diameter"]["value"]} {shape.input_props["outer_diameter"]["unit"]}', align = 'center')
 
 	# Stop turtle from closing
 	input('')
