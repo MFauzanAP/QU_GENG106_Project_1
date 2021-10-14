@@ -26,6 +26,12 @@ class donut(shape.shape):
 
 	# Function called to calculate shape properties
 	def calculate_properties(self):
+         
+		# Calculate inner diameter
+		self.input_props['inner_diameter']['value'] = 2 * self.input_props['inner_radius']['value']
+
+		# Calculate outer diameter
+		self.input_props['outer_diameter']['value'] = 2 * self.input_props['outer_radius']['value']
 
 		# Calculate perimeter
 		self.output_props['perimeter'] = { 'value': self.calculate_perimeter(), 'unit': 'mm' }
