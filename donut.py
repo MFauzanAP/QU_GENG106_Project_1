@@ -10,8 +10,8 @@ class donut(shape.shape):
 
 		# Declare rectangle properties
 		properties = {
-			'inner_radius'		: { 'value': inner_radius, 'unit': 'mm'},
 			'outer_radius'		: { 'value': outer_radius, 'unit': 'mm'},
+			'inner_radius'		: { 'value': inner_radius, 'unit': 'mm'},
 			'length'		: { 'value': beam_length, 'unit': 'm'},
 			'density'		: { 'value': density, 'unit': 'kg/m^3'},
 			'elasticity'		: { 'value': elasticity, 'unit': 'kN/m^2'},
@@ -27,11 +27,11 @@ class donut(shape.shape):
 	# Function called to calculate shape properties
 	def calculate_properties(self):
          
-		# Calculate inner diameter
-		self.input_props['inner_diameter']['value'] = 2 * self.input_props['inner_radius']['value']
-
 		# Calculate outer diameter
 		self.input_props['outer_diameter']['value'] = 2 * self.input_props['outer_radius']['value']
+  
+		# Calculate inner diameter
+		self.input_props['inner_diameter']['value'] = 2 * self.input_props['inner_radius']['value']
 
 		# Calculate perimeter
 		self.output_props['perimeter'] = { 'value': self.calculate_perimeter(), 'unit': 'mm' }

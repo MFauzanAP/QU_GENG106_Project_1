@@ -66,8 +66,8 @@ def ask_donut():
 	shape = donut.donut()
 
 	# Ask user to enter donut properties
-	shape.input_props['inner_radius']['value'] = validate_input(graphics.print_ask_properties, 'Enter Inner Radius: ', args = shape)
 	shape.input_props['outer_radius']['value'] = validate_input(graphics.print_ask_properties, 'Enter Outer Radius: ', args = shape)
+	shape.input_props['inner_radius']['value'] = validate_input(graphics.print_ask_properties, 'Enter Inner Radius: ', args = shape, max = shape.input_props['outer_radius']['value'])
 	shape.input_props['length']['value'] = validate_input(graphics.print_ask_properties, 'Enter Beam Length: ', args = shape)
 	shape.input_props['density']['value'] = validate_input(graphics.print_ask_properties, 'Enter Hollow Circular Density: ', args = shape)
 	shape.input_props['elasticity']['value'] = validate_input(graphics.print_ask_properties, 'Enter Hollow Circular Elasticity: ', args = shape)
@@ -80,7 +80,7 @@ def ask_donut():
 
 	# Draw donut using turtle
 	turtle_graphics.setup_turtle()
-	turtle_graphics.draw_circle(shape)
+	turtle_graphics.draw_donut(shape)
 
 # Function used to ask the user for t section data
 def ask_t_section():
