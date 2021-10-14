@@ -130,9 +130,9 @@ def draw_t_section(shape):
 	WIDTH = SHAPE_SIZE if ratio <= 1 else (1 / ratio) * SHAPE_SIZE
 	HEIGHT = SHAPE_SIZE if ratio >= 1 else ratio * SHAPE_SIZE
 	flange_width = (flange_width / overall_width) * WIDTH
-	flange_height = (flange_height / overall_width) * HEIGHT
+	flange_height = (flange_height / overall_height) * HEIGHT
 	web_width = (web_width / overall_width) * WIDTH
-	web_height = (web_height / overall_width) * HEIGHT
+	web_height = (web_height / overall_height) * HEIGHT
 
 	# Setup fill
 	pen.fillcolor(PEN_COLOR)
