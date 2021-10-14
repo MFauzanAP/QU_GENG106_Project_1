@@ -6,6 +6,7 @@ import circle
 import t_section
 import donut
 import utilities
+import math
 
 # Function used to ask user which shape he wants
 def ask_shape():
@@ -90,7 +91,7 @@ def ask_t_section():
 	# Ask user to enter t_section properties
 	shape.input_props['flange_width']['value'] = validate_input(graphics.print_ask_properties, 'Enter Flange Width: ', args = shape)
 	shape.input_props['flange_height']['value'] = validate_input(graphics.print_ask_properties, 'Enter Flange Height: ', args = shape)
-	shape.input_props['web_width']['value'] = validate_input(graphics.print_ask_properties, 'Enter Web Width: ', args = shape)
+	shape.input_props['web_width']['value'] = validate_input(graphics.print_ask_properties, 'Enter Web Width: ', args = shape, max = shape.input_props['flange_width']['value'])
 	shape.input_props['web_height']['value'] = validate_input(graphics.print_ask_properties, 'Enter Web Height: ', args = shape)
 	shape.input_props['length']['value'] = validate_input(graphics.print_ask_properties, 'Enter Beam Length: ', args = shape)
 	shape.input_props['density']['value'] = validate_input(graphics.print_ask_properties, 'Enter T Section Density: ', args = shape)
@@ -107,7 +108,7 @@ def ask_t_section():
 	turtle_graphics.draw_t_section(shape)
 
 # Function used to validate user input
-def validate_input(function, message, legal = [], args = None):
+def validate_input(function, message, legal = [], args = None, min = -math.inf, max = math.inf):
 
 	# Declare variable to store error message
 	error = ''
@@ -135,6 +136,24 @@ def validate_input(function, message, legal = [], args = None):
 
 				# Set error message
 				error = 'Input cannot be negative or 0'
+				
+				# Restart loop
+				continue
+
+			# Restart loop if value is below minimum
+			if response <= min:
+
+				# Set error message
+				error = f'Input cannot be equal to or below {min}'
+				
+				# Restart loop
+				continue
+
+			# Restart loop if value is below minimum
+			if response >= max:
+
+				# Set error message
+				error = f'Input cannot be equal to or above {max}'
 				
 				# Restart loop
 				continue
