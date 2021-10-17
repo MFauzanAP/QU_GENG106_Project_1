@@ -227,3 +227,91 @@ def draw_t_section(shape):
 
 	# Stop turtle from closing
 	input('')
+
+# Function used to draw i section with the correct dimensions
+def draw_i_section(shape):
+
+	# Extract data from input properties
+	overall_width = shape.input_props['overall_width']['value']
+	overall_height = shape.input_props['overall_height']['value']
+	flange_width = shape.input_props['flange_width']['value']
+	flange_height = shape.input_props['flange_height']['value']
+	web_width = shape.input_props['web_width']['value']
+	web_height = shape.input_props['web_height']['value']
+
+	# Calculate ratio of height to width
+	ratio = overall_height / overall_width
+
+	# Clamp ratio to avoid very tiny shapes
+	ratio = min(SIZE_LIMIT, max(1 / SIZE_LIMIT, ratio))
+
+	# Calculate t section width and height based on ratio
+	WIDTH = SHAPE_SIZE if ratio <= 1 else (1 / ratio) * SHAPE_SIZE
+	HEIGHT = SHAPE_SIZE if ratio >= 1 else ratio * SHAPE_SIZE
+	flange_width = (flange_width / overall_width) * WIDTH
+	flange_height = (flange_height / overall_height) * HEIGHT
+	web_width = (web_width / overall_width) * WIDTH
+	web_height = (web_height / overall_height) * HEIGHT
+
+	# Setup fill
+	pen.fillcolor(PEN_COLOR)
+	pen.begin_fill()
+
+	# Start from top left
+	pen.goto(-WIDTH / 2, HEIGHT / 2)
+
+	# Repeat 4 times to draw each flange side
+	for i in range(4):
+
+		# Draw width or height depending on which side is selected
+		pen.forward(flange_width if i % 2 == 0 else flange_height)
+
+		# Rotate 90 degrees
+		pen.right(90)
+
+	# Go to web starting position
+	pen.end_fill()
+	pen.goto(-web_width / 2, (HEIGHT / 2) - flange_height)
+	pen.begin_fill()
+
+	# Repeat 4 times to draw each web side
+	for i in range(4):
+
+		# Draw width or height depending on which side is selected
+		pen.forward(web_width if i % 2 == 0 else web_height)
+
+		# Rotate 90 degrees
+		pen.right(90)
+
+	# Start from top left
+	pen.goto(-WIDTH / 2, -HEIGHT / 2)
+
+	# Repeat 4 times to draw each flange side
+	for i in range(4):
+
+		# Draw width or height depending on which side is selected
+		pen.forward(flange_width if i % 2 == 0 else flange_height)
+
+		# Rotate 90 degrees
+		pen.right(-90)
+
+	# Stop fill
+	pen.end_fill()
+	pen.hideturtle()
+
+	# Write title
+	pen.goto(0, (HEIGHT / 2) + (DIMENSIONS_OFFSET * 2))
+	pen.write('I-Section', align = 'center', font = ('Arial', 16, 'bold'))
+ 
+	# Write dimensions
+	pen.goto(0, (HEIGHT / 2) + (DIMENSIONS_OFFSET / 2))
+	pen.write(f'{shape.input_props["flange_width"]["value"]} {shape.input_props["flange_width"]["unit"]}', align = 'center')
+	pen.goto((-WIDTH / 2) - (DIMENSIONS_OFFSET / 2), (HEIGHT / 2) - (flange_height / 2))
+	pen.write(f'{shape.input_props["flange_height"]["value"]} {shape.input_props["flange_height"]["unit"]}', align = 'right')
+	pen.goto(0, (-HEIGHT / 2) - DIMENSIONS_OFFSET)
+	pen.write(f'{shape.input_props["web_width"]["value"]} {shape.input_props["web_width"]["unit"]}', align = 'center')
+	pen.goto((-web_width / 2) - DIMENSIONS_OFFSET, 0)
+	pen.write(f'{shape.input_props["web_height"]["value"]} {shape.input_props["web_height"]["unit"]}', align = 'right')
+
+	# Stop turtle from closing
+	input('')

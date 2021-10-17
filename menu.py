@@ -129,6 +129,10 @@ def ask_i_section():
 	# Print out t_section properties
 	shape.print_properties()
 
+	# Draw t_section using turtle
+	turtle_graphics.setup_turtle()
+	turtle_graphics.draw_i_section(shape)
+
 # Function used to validate user input
 def validate_input(function, message, legal = [], args = None, min = -math.inf, max = math.inf):
 
