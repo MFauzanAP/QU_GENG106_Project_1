@@ -10,7 +10,7 @@ def main():
 		2		: menu.ask_circle,
 		3		: menu.ask_donut,
 		4		: menu.ask_t_section,
-		5		: menu.ask_rectangle,
+		5		: menu.ask_i_section,
 		9		: exit
 	}
 
