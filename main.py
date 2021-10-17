@@ -7,8 +7,8 @@ def main():
 	# Declare dictionary of menu choices and their respective functions
 	menu_choices = {
 		1		: menu.ask_rectangle,
-		2		: menu.ask_rectangle,
-		3		: menu.ask_rectangle,
+		2		: menu.ask_circle,
+		3		: menu.ask_donut,
 		4		: menu.ask_t_section,
 		5		: menu.ask_rectangle,
 		9		: exit

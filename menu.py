@@ -2,8 +2,11 @@
 import graphics
 import turtle_graphics
 import rectangle
+import circle
 import t_section
+import donut
 import utilities
+import math
 
 # Function used to ask user which shape he wants
 def ask_shape():
@@ -20,7 +23,7 @@ def ask_rectangle():
 	# Ask user to enter rectangle properties
 	shape.input_props['width']['value'] = validate_input(graphics.print_ask_properties, 'Enter Rectangle Width: ', args = shape)
 	shape.input_props['height']['value'] = validate_input(graphics.print_ask_properties, 'Enter Rectangle Height: ', args = shape)
-	shape.input_props['length']['value'] = validate_input(graphics.print_ask_properties, 'Enter Rectangle Length: ', args = shape)
+	shape.input_props['length']['value'] = validate_input(graphics.print_ask_properties, 'Enter Beam Length: ', args = shape)
 	shape.input_props['density']['value'] = validate_input(graphics.print_ask_properties, 'Enter Rectangle Density: ', args = shape)
 	shape.input_props['elasticity']['value'] = validate_input(graphics.print_ask_properties, 'Enter Rectangle Elasticity: ', args = shape)
 
@@ -34,6 +37,51 @@ def ask_rectangle():
 	turtle_graphics.setup_turtle()
 	turtle_graphics.draw_rectangle(shape)
 
+# Function used to ask the user for circle data
+def ask_circle():
+
+	# Create a new circle with starting values
+	shape = circle.circle()
+
+	# Ask user to enter circle properties
+	shape.input_props['radius']['value'] = validate_input(graphics.print_ask_properties, 'Enter Circle Radius: ', args = shape)
+	shape.input_props['length']['value'] = validate_input(graphics.print_ask_properties, 'Enter Beam Length: ', args = shape)
+	shape.input_props['density']['value'] = validate_input(graphics.print_ask_properties, 'Enter Circle Density: ', args = shape)
+	shape.input_props['elasticity']['value'] = validate_input(graphics.print_ask_properties, 'Enter Circle Elasticity: ', args = shape)
+
+	# Recalculate properties
+	shape.calculate_properties()
+
+	# Print out circle properties
+	shape.print_properties()
+ 
+	# Draw circle using turtle
+	turtle_graphics.setup_turtle()
+	turtle_graphics.draw_circle(shape)
+
+# Function used to ask the user for donut data
+def ask_donut():
+
+	# Create a new donut with starting values
+	shape = donut.donut()
+
+	# Ask user to enter donut properties
+	shape.input_props['outer_radius']['value'] = validate_input(graphics.print_ask_properties, 'Enter Outer Radius: ', args = shape)
+	shape.input_props['inner_radius']['value'] = validate_input(graphics.print_ask_properties, 'Enter Inner Radius: ', args = shape, max = shape.input_props['outer_radius']['value'])
+	shape.input_props['length']['value'] = validate_input(graphics.print_ask_properties, 'Enter Beam Length: ', args = shape)
+	shape.input_props['density']['value'] = validate_input(graphics.print_ask_properties, 'Enter Hollow Circular Density: ', args = shape)
+	shape.input_props['elasticity']['value'] = validate_input(graphics.print_ask_properties, 'Enter Hollow Circular Elasticity: ', args = shape)
+
+	# Recalculate properties
+	shape.calculate_properties()
+
+	# Print out circle properties
+	shape.print_properties()
+
+	# Draw donut using turtle
+	turtle_graphics.setup_turtle()
+	turtle_graphics.draw_donut(shape)
+
 # Function used to ask the user for t section data
 def ask_t_section():
 
@@ -43,9 +91,9 @@ def ask_t_section():
 	# Ask user to enter t_section properties
 	shape.input_props['flange_width']['value'] = validate_input(graphics.print_ask_properties, 'Enter Flange Width: ', args = shape)
 	shape.input_props['flange_height']['value'] = validate_input(graphics.print_ask_properties, 'Enter Flange Height: ', args = shape)
-	shape.input_props['web_width']['value'] = validate_input(graphics.print_ask_properties, 'Enter Web Width: ', args = shape)
+	shape.input_props['web_width']['value'] = validate_input(graphics.print_ask_properties, 'Enter Web Width: ', args = shape, max = shape.input_props['flange_width']['value'])
 	shape.input_props['web_height']['value'] = validate_input(graphics.print_ask_properties, 'Enter Web Height: ', args = shape)
-	shape.input_props['length']['value'] = validate_input(graphics.print_ask_properties, 'Enter T Section Length: ', args = shape)
+	shape.input_props['length']['value'] = validate_input(graphics.print_ask_properties, 'Enter Beam Length: ', args = shape)
 	shape.input_props['density']['value'] = validate_input(graphics.print_ask_properties, 'Enter T Section Density: ', args = shape)
 	shape.input_props['elasticity']['value'] = validate_input(graphics.print_ask_properties, 'Enter T Section Elasticity: ', args = shape)
 
@@ -60,7 +108,7 @@ def ask_t_section():
 	turtle_graphics.draw_t_section(shape)
 
 # Function used to validate user input
-def validate_input(function, message, legal = [], args = None):
+def validate_input(function, message, legal = [], args = None, min = -math.inf, max = math.inf):
 
 	# Declare variable to store error message
 	error = ''
@@ -88,6 +136,24 @@ def validate_input(function, message, legal = [], args = None):
 
 				# Set error message
 				error = 'Input cannot be negative or 0'
+				
+				# Restart loop
+				continue
+
+			# Restart loop if value is below minimum
+			if response <= min:
+
+				# Set error message
+				error = f'Input cannot be equal to or below {min}'
+				
+				# Restart loop
+				continue
+
+			# Restart loop if value is below minimum
+			if response >= max:
+
+				# Set error message
+				error = f'Input cannot be equal to or above {max}'
 				
 				# Restart loop
 				continue
