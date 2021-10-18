@@ -141,7 +141,7 @@ def draw_donut(shape):
 
 	# Write title
 	pen.goto(0, (OUTER_DIAMETER / 2) + DIMENSIONS_OFFSET)
-	pen.write('Rectangle', align = 'center', font = ('Arial', 16, 'bold'))
+	pen.write('Hollow Circular', align = 'center', font = ('Arial', 16, 'bold'))
 
 	# Write dimensions
 	pen.goto(0, 0)

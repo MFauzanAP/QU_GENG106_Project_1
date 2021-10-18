@@ -77,11 +77,11 @@ class donut(shape.shape):
 	def calculate_inertia(self):
 		
 		# Extract data from input properties
-		i = self.input_props['inner_radius']['value']
-		o = self.input_props['outer_radius']['value']
+		di = self.input_props['inner_diameter']['value']
+		d = self.input_props['outer_diameter']['value']
 
 		# Calculate inertia
-		inertia = (math.pi * ((2 * o) ** 4) - (2 * i) ** 4) / 64
+		inertia = (math.pi / 64) * ((d ** 4) - (di ** 4))
 
 		# Return inertia
 		return inertia
