@@ -1,11 +1,11 @@
 # Imports
 import graphics
 import turtle_graphics
-import rectangle
-import circle
-import t_section
-import i_section
-import donut
+from rectangle import rectangle
+from circle import circle
+from t_section import t_section
+from i_section import i_section
+from donut import donut
 import utilities
 import math
 
@@ -19,7 +19,7 @@ def ask_shape():
 def ask_rectangle():
 
 	# Create a new rectangle with starting values
-	shape = rectangle.rectangle()
+	shape = rectangle()
 
 	# Ask user to enter rectangle properties
 	shape.input_props['width']['value'] = validate_input(graphics.print_ask_properties, 'Enter Rectangle Width: ', args = shape)
@@ -42,7 +42,7 @@ def ask_rectangle():
 def ask_circle():
 
 	# Create a new circle with starting values
-	shape = circle.circle()
+	shape = circle()
 
 	# Ask user to enter circle properties
 	shape.input_props['radius']['value'] = validate_input(graphics.print_ask_properties, 'Enter Circle Radius: ', args = shape)
@@ -64,7 +64,7 @@ def ask_circle():
 def ask_donut():
 
 	# Create a new donut with starting values
-	shape = donut.donut()
+	shape = donut()
 
 	# Ask user to enter donut properties
 	shape.input_props['outer_radius']['value'] = validate_input(graphics.print_ask_properties, 'Enter Outer Radius: ', args = shape)
@@ -87,7 +87,7 @@ def ask_donut():
 def ask_t_section():
 
 	# Create a new t_section with starting values
-	shape = t_section.t_section()
+	shape = t_section()
 
 	# Ask user to enter t_section properties
 	shape.input_props['flange_width']['value'] = validate_input(graphics.print_ask_properties, 'Enter Flange Width: ', args = shape)
@@ -112,7 +112,7 @@ def ask_t_section():
 def ask_i_section():
 
 	# Create a new t_section with starting values
-	shape = i_section.i_section()
+	shape = i_section()
 
 	# Ask user to enter t_section properties
 	shape.input_props['flange_width']['value'] = validate_input(graphics.print_ask_properties, 'Enter Flange Width: ', args = shape)
