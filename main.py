@@ -14,8 +14,11 @@ def main():
 		9		: exit
 	}
 
-	# Ask the user for a shape and redirect to the shape
-	menu_choices[menu.ask_shape()]()
+	# Infinite loop to keep asking question
+	while True:
+
+		# Ask the user for a shape and redirect to the shape
+		menu_choices[menu.ask_shape()]()
 
 # Call main function
 main()

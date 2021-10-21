@@ -76,7 +76,7 @@ def draw_rectangle(shape):
 	pen.write(f'{shape.input_props["height"]["value"]} {shape.input_props["height"]["unit"]}', align = 'right')
 
 	# Stop turtle from closing
-	input('')
+	input('Press any key to continue')
 
 # Function used to draw circle with the correct dimensions
 def draw_circle(shape):
@@ -107,7 +107,7 @@ def draw_circle(shape):
 	pen.write(f'{shape.input_props["diameter"]["value"]} {shape.input_props["diameter"]["unit"]}', align = 'center')
 
 	# Stop turtle from closing
-	input('')
+	input('Press any key to continue')
 
 # Function used to draw donut with the correct dimensions
 def draw_donut(shape):
@@ -150,7 +150,7 @@ def draw_donut(shape):
 	pen.write(f'{shape.input_props["outer_diameter"]["value"]} {shape.input_props["outer_diameter"]["unit"]}', align = 'center')
 
 	# Stop turtle from closing
-	input('')
+	input('Press any key to continue')
 
 # Function used to draw t section with the correct dimensions
 def draw_t_section(shape):
@@ -226,7 +226,7 @@ def draw_t_section(shape):
 	pen.write(f'{shape.input_props["web_height"]["value"]} {shape.input_props["web_height"]["unit"]}', align = 'right')
 
 	# Stop turtle from closing
-	input('')
+	input('Press any key to continue')
 
 # Function used to draw i section with the correct dimensions
 def draw_i_section(shape):
@@ -314,4 +314,4 @@ def draw_i_section(shape):
 	pen.write(f'{shape.input_props["web_height"]["value"]} {shape.input_props["web_height"]["unit"]}', align = 'right')
 
 	# Stop turtle from closing
-	input('')
+	input('Press any key to continue')
