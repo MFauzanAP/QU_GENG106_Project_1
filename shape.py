@@ -1,5 +1,6 @@
 # Imports
 import graphics
+import writing
 
 # Base shape class that will be overwritten to create the other classes
 class shape:
@@ -48,12 +49,15 @@ class shape:
 
 		# Calculate surface area
 		self.output_props['surface area'] = { 'value': self.calculate_surface_area(), 'unit': 'm^2' }
+		writing.written('surface area', self.calculate_surface_area())
 
 		# Calculate weight
 		self.output_props['weight'] = { 'value': self.calculate_weight(), 'unit': 'kg' }
-
+		writing.written('weight', self.calculate_weight())
+		
 		# Calculate flexural rigidity
 		self.output_props['flexural rigidity'] = { 'value': self.calculate_flexural_rigidity(), 'unit': 'kN.m^2' }
+		writing.written('flexural rigidity', self.calculate_flexural_rigidity())
 
 	# Function called to print out the properties of the shape
 	def print_properties(self):

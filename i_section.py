@@ -1,5 +1,6 @@
 # Imports
 import shape
+import writing
 
 # Derive from base shape class
 class i_section(shape.shape):
@@ -31,16 +32,21 @@ class i_section(shape.shape):
 
 		# Calculate overall width and height
 		self.input_props['overall_width']['value'] = self.input_props['flange_width']['value']
+		writing.written('overall width',self.input_props['overall_width']['value'])
 		self.input_props['overall_height']['value'] = (2 * self.input_props['flange_height']['value']) + self.input_props['web_height']['value']
+		writing.written('overall height',self.input_props['overall_height']['value'])
 
 		# Calculate perimeter
 		self.output_props['perimeter'] = { 'value': self.calculate_perimeter(), 'unit': 'mm^2' }
+		writing.written('perimeter',self.calculate_perimeter())
 
 		# Calculate area
 		self.output_props['area'] = { 'value': self.calculate_area(), 'unit': 'mm^2' }
+		writing.written('area',self.calculate_area())
 
 		# Calculate inertia
 		self.output_props['inertia'] = { 'value': self.calculate_inertia(), 'unit': 'mm^4' }
+		writing.written('inertia',self.calculate_inertia())
 
 		# Call base function
 		super().calculate_general_properties()
@@ -50,12 +56,11 @@ class i_section(shape.shape):
 
 		# Extract data from input properties
 		b = self.input_props['flange_width']['value']
-		s = self.input_props['flange_height']['value']
-		h = self.input_props['web_height']['value']
+		s = self.input_props['overall_height']['value']
 		t = self.input_props['web_width']['value']
 
 		# Calculate perimeter
-		perimeter = (2 * ((b * 2) + (s * 2) - t)) + (2 * h)
+		perimeter = 2*b + 2*s + 2*(b-t)
 
 		# Calculate perimeter
 		return perimeter

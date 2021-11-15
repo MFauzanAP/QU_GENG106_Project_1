@@ -120,6 +120,26 @@ def print_menu():
 	print(f'(3) Donut')
 	print(f'(4) T-Section')
 	print(f'(5) I-Section')
+	print(f'(6) Create new file')
+	print(f'(7) Show previous results')
+	print(f'(9) Exit')
 	print()
+
+def print_menu2():
+
+	# Clear screen
+	clear_screen()
+
+	# Output title
+	print(f'Geometric Shapes Application')
+
+	# Output options
+	print(f'(1) Rectangle')
+	print(f'(2) Circle')
+	print(f'(3) Donut')
+	print(f'(4) T-Section')
+	print(f'(5) I-Section')
+	print(f'(6) New file has been created')
+	print(f'(7) Show previous results')
 	print(f'(9) Exit')
 	print()
