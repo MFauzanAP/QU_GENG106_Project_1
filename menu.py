@@ -1,6 +1,5 @@
 # Imports
 import graphics
-import turtle_graphics
 from rectangle import rectangle
 from circle import circle
 from t_section import t_section
@@ -8,12 +7,16 @@ from i_section import i_section
 from donut import donut
 import utilities
 import math
+import writing
+import drawing
+
+
 
 # Function used to ask user which shape he wants
 def ask_shape():
 
 	# Ask user to choose a shape and validate it and then return the users choice
-	return validate_input(graphics.print_menu, 'Enter Your Choice: ', legal = [1, 2, 3, 4, 5, 9])
+	return validate_input(graphics.print_menu, 'Enter Your Choice: ', legal = [1, 2, 3, 4, 5, 6, 7, 9])
 
 # Function used to ask the user for rectangle data
 def ask_rectangle():
@@ -28,15 +31,25 @@ def ask_rectangle():
 	shape.input_props['density']['value'] = validate_input(graphics.print_ask_properties, 'Enter Rectangle Density: ', args = shape)
 	shape.input_props['elasticity']['value'] = validate_input(graphics.print_ask_properties, 'Enter Rectangle Elasticity: ', args = shape)
 
+	# Append to the file
+	writing.written('Rectangle', '---')
+	writing.written('width', shape.input_props['width']['value'])
+	writing.written('height', shape.input_props['height']['value'])
+	writing.written('beam length', shape.input_props['length']['value'])
+	writing.written('density', shape.input_props['density']['value'])
+	writing.written('elasticity', shape.input_props['elasticity']['value'])
+
 	# Recalculate properties
 	shape.calculate_properties()
 
 	# Print out rectangle properties
 	shape.print_properties()
 
-	# Draw rectangle using turtle
-	turtle_graphics.setup_turtle()
-	turtle_graphics.draw_rectangle(shape)
+	# Draw rectangle using matlplotlib
+	drawing.draw_rectangle(shape.input_props['width']['value'],shape.input_props['height']['value'])
+
+	# Ending the entry
+	writing.end_entry()
 
 # Function used to ask the user for circle data
 def ask_circle():
@@ -50,6 +63,13 @@ def ask_circle():
 	shape.input_props['density']['value'] = validate_input(graphics.print_ask_properties, 'Enter Circle Density: ', args = shape)
 	shape.input_props['elasticity']['value'] = validate_input(graphics.print_ask_properties, 'Enter Circle Elasticity: ', args = shape)
 
+	# Append to the file 
+	writing.written('Circular','---')
+	writing.written('radius', shape.input_props['radius']['value'])
+	writing.written('beam length', shape.input_props['length']['value'])
+	writing.written('density', shape.input_props['density']['value'])
+	writing.written('elasticity', shape.input_props['elasticity']['value'])
+
 	# Recalculate properties
 	shape.calculate_properties()
 
@@ -57,8 +77,10 @@ def ask_circle():
 	shape.print_properties()
  
 	# Draw circle using turtle
-	turtle_graphics.setup_turtle()
-	turtle_graphics.draw_circle(shape)
+	drawing.draw_circle(shape.input_props['radius']['value'])
+
+	# Ending the entry
+	writing.end_entry()
 
 # Function used to ask the user for donut data
 def ask_donut():
@@ -73,15 +95,25 @@ def ask_donut():
 	shape.input_props['density']['value'] = validate_input(graphics.print_ask_properties, 'Enter Hollow Circular Density: ', args = shape)
 	shape.input_props['elasticity']['value'] = validate_input(graphics.print_ask_properties, 'Enter Hollow Circular Elasticity: ', args = shape)
 
+	# Append to the file 
+	writing.written('Hollow Circular','---')
+	writing.written('outer radius', shape.input_props['outer_radius']['value'])
+	writing.written('inner radius', shape.input_props['inner_radius']['value'])
+	writing.written('beam length', shape.input_props['length']['value'])
+	writing.written('density', shape.input_props['density']['value'])
+	writing.written('elasticity', shape.input_props['elasticity']['value'])
+
 	# Recalculate properties
 	shape.calculate_properties()
 
 	# Print out circle properties
 	shape.print_properties()
 
-	# Draw donut using turtle
-	turtle_graphics.setup_turtle()
-	turtle_graphics.draw_donut(shape)
+	# Draw donut using matplotlib
+	drawing.draw_donut(shape.input_props['outer_radius']['value'], shape.input_props['inner_radius']['value'])
+
+	# Ending the entry
+	writing.end_entry()
 
 # Function used to ask the user for t section data
 def ask_t_section():
@@ -98,15 +130,27 @@ def ask_t_section():
 	shape.input_props['density']['value'] = validate_input(graphics.print_ask_properties, 'Enter T Section Density: ', args = shape)
 	shape.input_props['elasticity']['value'] = validate_input(graphics.print_ask_properties, 'Enter T Section Elasticity: ', args = shape)
 
+	# Append to the file
+	writing.written('T-section','---')
+	writing.written('flange width', shape.input_props['flange_width']['value'])
+	writing.written('flange height', shape.input_props['flange_height']['value'])
+	writing.written('web_width',shape.input_props['web_width']['value'])
+	writing.written('web_height',shape.input_props['web_height']['value'])
+	writing.written('beam length', shape.input_props['length']['value'])
+	writing.written('density', shape.input_props['density']['value'])
+	writing.written('elasticity', shape.input_props['elasticity']['value'])
+
 	# Recalculate properties
 	shape.calculate_properties()
 
 	# Print out t_section properties
 	shape.print_properties()
 
-	# Draw t_section using turtle
-	turtle_graphics.setup_turtle()
-	turtle_graphics.draw_t_section(shape)
+	# Draw t_section using matplotlib
+	drawing.draw_t_section(shape.input_props['web_width']['value'],shape.input_props['web_height']['value'],shape.input_props['flange_width']['value'],shape.input_props['flange_height']['value'])
+
+	# Ending the entry
+	writing.end_entry()
 
 # Function used to ask the user for i section data
 def ask_i_section():
@@ -120,8 +164,18 @@ def ask_i_section():
 	shape.input_props['web_width']['value'] = validate_input(graphics.print_ask_properties, 'Enter Web Width: ', args = shape, max = shape.input_props['flange_width']['value'])
 	shape.input_props['web_height']['value'] = validate_input(graphics.print_ask_properties, 'Enter Web Height: ', args = shape)
 	shape.input_props['length']['value'] = validate_input(graphics.print_ask_properties, 'Enter Beam Length: ', args = shape)
-	shape.input_props['density']['value'] = validate_input(graphics.print_ask_properties, 'Enter T Section Density: ', args = shape)
-	shape.input_props['elasticity']['value'] = validate_input(graphics.print_ask_properties, 'Enter T Section Elasticity: ', args = shape)
+	shape.input_props['density']['value'] = validate_input(graphics.print_ask_properties, 'Enter I Section Density: ', args = shape)
+	shape.input_props['elasticity']['value'] = validate_input(graphics.print_ask_properties, 'Enter I Section Elasticity: ', args = shape)
+
+	# Append to the file
+	writing.written('I-Section','---')
+	writing.written('flange width', shape.input_props['flange_width']['value'])
+	writing.written('flange height', shape.input_props['flange_height']['value'])
+	writing.written('web_width',shape.input_props['web_width']['value'])
+	writing.written('web_height',shape.input_props['web_height']['value'])
+	writing.written('beam length', shape.input_props['length']['value'])
+	writing.written('density', shape.input_props['density']['value'])
+	writing.written('elasticity', shape.input_props['elasticity']['value'])
 
 	# Recalculate properties
 	shape.calculate_properties()
@@ -129,9 +183,17 @@ def ask_i_section():
 	# Print out t_section properties
 	shape.print_properties()
 
-	# Draw t_section using turtle
-	turtle_graphics.setup_turtle()
-	turtle_graphics.draw_i_section(shape)
+	# Draw t_section using matplotlib
+	drawing.draw_i_section(shape.input_props['web_width']['value'],shape.input_props['web_height']['value'],shape.input_props['flange_width']['value'],shape.input_props['flange_height']['value'])
+
+	# Ending the entry
+	writing.end_entry()
+
+# show the contents of the file
+def show_prev(): 
+	writing.get_previous()
+	input()
+
 
 # Function used to validate user input
 def validate_input(function, message, legal = [], args = None, min = -math.inf, max = math.inf):

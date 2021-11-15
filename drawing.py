@@ -8,7 +8,7 @@ def draw_rectangle(b,h):
     # define a recatngle drawn from the origin, red colour with black outline
     plt.gca().add_patch(rectangle)
     # displays the rectangle
-    plt.gca().text(-b,h,'Rectangular')
+    plt.gca().text(0-b*0.25,h,'Rectangular')
     # adds a label with a position
     plt.axis('scaled')
     # meaning the dimensions would not exceed the screen
@@ -16,6 +16,7 @@ def draw_rectangle(b,h):
     # x or y axis would not be shown
     plt.show()
     # displays the shapes
+    input('')
 
     
 def draw_circle(r):
@@ -61,6 +62,9 @@ def draw_i_section(t,h,b,s):
     plt.axis('off')
     plt.show()
 
-draw_i_section(10,50,50,10)
+    
+ 	
+
+
 
 

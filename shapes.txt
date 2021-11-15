@@ -1,0 +1,12 @@
+Rectangle : ---
+width : 10.0
+height : 1.0
+beam length : 10.0
+density : 10.0
+elasticity : 10.0
+perimeter : 22.0
+area : 10.0
+inertia : 0.8333333333333334
+surface area : 0.21999999999999997
+weight : 0.001
+flexural rigidity : 8.333333333333335e-10

@@ -1,6 +1,7 @@
 # Imports
 import shape
 import math
+import writing
 
 # Derive from base shape class
 class circle(shape.shape):
@@ -28,15 +29,19 @@ class circle(shape.shape):
         
 		# Calculate diameter
 		self.input_props['diameter']['value'] = 2 * self.input_props['radius']['value']
+		writing.written('diameter',self.input_props['diameter']['value'])
 
 		# Calculate perimeter
 		self.output_props['perimeter'] = { 'value': self.calculate_perimeter(), 'unit': 'mm' }
+		writing.written('perimeter',self.calculate_perimeter())
 
 		# Calculate area
 		self.output_props['area'] = { 'value': self.calculate_area(), 'unit': 'mm^2' }
+		writing.written('area',self.calculate_area())
 
 		# Calculate inertia
 		self.output_props['inertia'] = { 'value': self.calculate_inertia(), 'unit': 'mm^4' }
+		writing.written('inertia',self.calculate_inertia())
 
 		# Call base function
 		super().calculate_general_properties()
